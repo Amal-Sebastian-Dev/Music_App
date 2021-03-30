@@ -1,1 +1,14 @@
 
+
+ion-tab-bar {
+  --background: none;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  border: none;
+  outline: none;
+
+  ion-tab-button {
+    --background: none;
+  }
+}

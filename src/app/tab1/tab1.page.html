@@ -1,17 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="outerbigcircle"></div>
+  <div class="outercircle"></div>
+  <div class="innerlightcircle"></div>
+  <div class="dots" id="dots">
+    <div class="dot one" ></div>
+    <div class="dot two" ></div>
+    <div class="dot three"></div>
+  </div>
+
+  <button ion-button class="record-btn" id="recordBtn">
+    <fa-icon icon="microphone"></fa-icon>
+  </button>
+
+  <input type="file" accept="audio/*" style="opacity: 0; top: -10%;" (change)="fileChanged($event)" class="fileButton" #fileButton />
+
+  <button ion-button [disabled]="recording" (click)="SelectFile()" class="file-upload-btn" id="fileUploadBtn">
+    <fa-icon icon="folder"></fa-icon>
+  </button>
+
 </ion-content>

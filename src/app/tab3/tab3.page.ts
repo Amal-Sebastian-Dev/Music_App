@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
+  profilePic = "../../assets/profile.jpg";
+
   constructor() {}
 
 }
