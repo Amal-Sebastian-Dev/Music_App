@@ -1,5 +1,22 @@
+ion-toolbar {
+  --background: transparent;
+
+  .upload-btn {
+    background: none;
+    background-color: none;
+    color: #53cc98;
+    text-decoration: none;
+    outline: none;
+  }
+
+  .upload-btn:disabled {
+    color: rgb(146, 144, 144);
+  }
+}
+
+
 ion-content {
-  --background: #36413c;
+  --background: #222f3e;
   font-family: sans-serif;
   box-sizing: border-box;
   text-decoration: none;
@@ -14,7 +31,6 @@ ion-content {
   width: 205px;
   height: 205px;
   border-radius: 50%;
-  //animation-name: outerbigcircle-grow;
   animation-duration: 2.8s;
   animation-iteration-count: infinite;
 }
@@ -39,9 +55,6 @@ ion-content {
   height: 165px;
   border-radius: 50%;
   background: #36a5758a;
-  //animation-name: innerlightcircle-grow;
-  //animation-duration: 2.8s;
-  //animation-iteration-count: infinite;
 }
 
 .dots {
@@ -131,24 +144,6 @@ ion-content {
   }
 }
 
-//@keyframes innerlightcircle-grow {
-//  0% {
-//    width: 165px;
-//    height: 165px;
-//
-//  }
-//
-//  50% {
-//    width: 105px;
-//    height: 105px;
-//  }
-//
-//  100% {
-//    width: 165px;
-//    height: 165px;
-//  }
-//}
-
 
 .record-btn {
   background: none;
@@ -169,22 +164,4 @@ ion-content {
   outline: none;
 }
 
-.file-upload-btn {
-  background: none;
-  color: #53cc98;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 25px;
-  outline: none;
-  transition: all 0.3s;
-}
-
-.file-upload-btn:disabled {
-  color: rgb(146, 144, 144);
-}
-
-.file-upload-btn:focus {
-  color: #fff;
-}
 

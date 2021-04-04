@@ -1,4 +1,12 @@
-
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="SelectFile()" id="fileUploadBtn" [disabled]="recording" class="upload-btn">
+        <ion-icon slot="icon-only" name="folder"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
 
@@ -13,12 +21,6 @@
 
   <button ion-button class="record-btn" id="recordBtn">
     <fa-icon icon="microphone"></fa-icon>
-  </button>
-
-  <input type="file" accept="audio/*" style="opacity: 0; top: -10%;" (change)="fileChanged($event)" class="fileButton" #fileButton />
-
-  <button ion-button [disabled]="recording" (click)="SelectFile()" class="file-upload-btn" id="fileUploadBtn">
-    <fa-icon icon="folder"></fa-icon>
   </button>
 
 </ion-content>

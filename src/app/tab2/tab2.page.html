@@ -12,55 +12,6 @@
 
 
 
-  <!--
-    <div class="categories ion-padding">
-    <div class="scroll" id="scroll" scrollX="true">
-      <ion-badge class="mostLikedTag" color="light" tappable (click)="tagsAnim($event, 'Most Liked')">Most Liked</ion-badge>
-      <ion-badge *ngFor="let tag of tags" color="light" tappable (click)="tagsAnim($event, tag)">{{tag}}</ion-badge>
-    </div>
-  </div>
-
-  <div class="container">
-    <ion-slides [options]="option" (ionSlideReachEnd)="loadNextPosts()">
-      <ion-slide *ngFor="let post of posts">
-        <ion-grid style="z-index: 0;">
-          <ion-row style="margin-bottom: -20px;">
-            <ion-col size="12">
-              <ion-item lines="none">
-                <h6 style="color: #bef992; max-width: 180px; overflow: hidden; display: block; white-space: nowrap; text-overflow: ellipsis;">{{post.username}}</h6>
-                <ion-icon name="share-social-sharp" slot="end" style="size: 3rem; color: #00fff5;"></ion-icon>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row class="no-padding no-margin">
-            <ion-card style="background-image: url({{post.profilePic}})">
-
-            </ion-card>
-          </ion-row>
-          <ion-row style="margin-top: -20px;">
-            <ion-col size="12">
-              <ion-item lines="none">
-                <div slot="start" id="{{post.postId}}">
-                  <ion-icon id="playBtn" name="play" style="display: flex; color: white;" slot="start" tappable (click)="playAudio(post.url, post.postId)"></ion-icon>
-                  <ion-icon id="pauseBtn" class="pausebtn" style="display: none; color: white;" name="pause" slot="start" tappable (click)="pauseAudio(post.postId)"></ion-icon>
-                  <div id="loading" style="display: none;" slot="start">
-                    <ion-spinner style="color: white; height: 15px; width: 15px;" name="crescent"></ion-spinner>
-                  </div>
-                  <ion-icon id="resumeBtn" name="play" style="display: none;" slot="start" tappable (click)="resumeAudio(post.postId)"></ion-icon>
-                </div>
-                <ion-text style="color: white; max-width: 150px; overflow: hidden; display: block; white-space: nowrap; text-overflow: ellipsis;">{{post.title}}</ion-text>
-                <ion-icon tappable (click)="likePost(post.postId, $event, post)" slot="end" [name]="post.heartType" style="color: white; size: 20px; font-size: 20px;"></ion-icon>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-slide>
-    </ion-slides>
-  </div>
-  -->
-
-
-
   <div *ngFor="let post of posts" style="width: 100%; display: flex; align-items: center; justify-content: center;">
     <div class="profile-card" data-aos="zoom-in-up">
       <div class="front">

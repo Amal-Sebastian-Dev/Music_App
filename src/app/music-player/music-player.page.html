@@ -1,0 +1,59 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="color: #fff;" icon="chevron-back">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="!loading" slot="end">
+      <ion-button class="upload-btn">
+        <ion-icon slot="icon-only" name="checkmark-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+
+  <div>
+    <div class="webflow-style-input">
+      <input class="" type="email" placeholder="SONG NAME" >
+    </div>
+
+    <ion-item>
+      <ion-label>How about some tags?</ion-label>
+      <ion-select multiple="true" [(ngModel)]="selectedTag" (ionChange)="tagSelected()" placeholder="Please select" cancelText="cancel" okText="Okay">
+        <ion-select-option *ngFor="let tag of tags" value={{tag}}>{{tag}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <div class="container" text-center>
+    <div class="time">
+      <span class="currentTime">{{currentTime}}</span>
+      <span class="remainingTime">{{restTime}}</span>
+    </div>
+
+    <ion-range (click)="changePosition()" min="0" [max]="audioDuration" [(ngModel)]="currentPosition" mode="md"></ion-range>
+
+
+    <ion-icon button (click)="playPause()" class="play-pause-btn" [name]="playIcon" slot="icon-only"></ion-icon>
+  </div>
+
+
+  <div class="visualizer-container">
+  </div>
+
+
+  <div id="preloader">
+    <div id="status">
+       <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

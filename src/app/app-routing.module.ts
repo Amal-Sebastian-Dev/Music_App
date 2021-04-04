@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'signin-signup',
     loadChildren: () => import('./signin-signup/signin-signup.module').then( m => m.SigninSignupPageModule)
+  },
+  {
+    path: 'music-player',
+    loadChildren: () => import('./music-player/music-player.module').then( m => m.MusicPlayerPageModule)
   }
 ];
 @NgModule({

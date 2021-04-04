@@ -1,0 +1,259 @@
+@font-face {
+  font-family: 'Poppins';
+
+  src: url('../../assets/Poppins/Poppins-italic-700.ttf');//path to your font file
+}
+
+ion-toolbar {
+  --background: transparent;
+
+  .upload-btn {
+    background: none;
+    background-color: none;
+    color: #00ff91;
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+ion-content {
+  --background: #222f3e;
+
+  h1 {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin-bottom: 50px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: x-large;
+  }
+
+    // colors
+  $input-background: rgba(57, 63, 84, 0.8);
+  $input-text-inactive: #7881A1;
+  $input-text-active: #BFD2FF;
+
+  // gradient animation
+  @keyframes gradient {
+    0%{background-position:0 0}
+    100%{background-position:100% 0}
+  }
+
+  input {
+    border-style: none;
+    background: transparent;
+    outline: none;
+  }
+
+  .webflow-style-input {
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 15px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    border-radius: 5px;
+    padding: .1rem 0rem .1rem;
+    background: $input-background;
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      z-index: 999;
+      height: 2px;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+      background-position: 0% 0%;
+      background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
+      background-size: 500% auto;
+      animation: gradient 3s linear infinite;
+    }
+  }
+
+  .webflow-style-input input {
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-grow: 1;
+    color: $input-text-active;
+    font-size: 1.1rem;
+    line-height: 2.4rem;
+    vertical-align: middle;
+    &::-webkit-input-placeholder {
+      color: $input-text-inactive;
+    }
+  }
+
+
+}
+
+
+.visualizer-container {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  left: 0;
+  text-align: center;
+
+  .visualizer-container_bar {
+    display: inline-block;
+    background: white;
+    margin: 0px 1px;
+    width: 10px;
+  }
+}
+
+.container {
+  left: 0;
+  right: 0;
+  position: absolute;
+  bottom: 30px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+
+
+
+  .time {
+    font-family: 'Poppins';
+    display: flex;
+    color: white;
+    font-size: 15px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  ion-range {
+    padding: 0px 10px;
+    --bar-height: 3px;
+    --bar-background: rgb(160, 75, 177) !important;
+    --knob-background: rgb(230, 103, 255) !important;
+  }
+
+  .play-pause-btn {
+    font-size: 70px;
+    border-radius: 50%;
+    background-color: rgba(57, 63, 84, 0.8);
+    color: #BFD2FF;
+  }
+}
+
+
+#preloader {
+  opacity: 0;
+  transition: opacity 0.5s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  //background: #222f3e;
+  background: rgba(0, 178, 250, 1);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  //z-index: 500;
+  z-index: -1;
+  /* makes sure it stays on top */
+}
+
+#status {
+  width: 50px;
+  height: 30px;
+  position: fixed;
+  left: 50%;
+  /* centers the loading animation horizontally one the screen */
+  top: 50%;
+  /* centers the loading animation vertically one the screen */
+  margin: -25px 0 0 -15px;
+  /* is width and height divided by two */
+}
+
+.spinner {
+  margin: 0px auto;
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: #fff;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+  0%,
+  40%,
+  100% {
+    -webkit-transform: scaleY(0.4)
+  }
+  20% {
+    -webkit-transform: scaleY(1.0)
+  }
+}
+
+@keyframes stretchdelay {
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+
+ion-item {
+  position: relative;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 70px;
+  border-radius: 5px;
+  --background: rgba(57, 63, 84, 0.8);
+  color: #BFD2FF;
+
+  ion-select {
+    --background: rgba(57, 63, 84, 0.8);
+  }
+
+  ion-select-option {
+    --background: rgba(57, 63, 84, 0.8);
+  }
+}
+

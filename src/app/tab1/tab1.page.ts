@@ -1,4 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Media } from '@ionic-native/media/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { Platform } from '@ionic/angular';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -10,8 +16,18 @@ export class Tab1Page implements OnInit{
   @ViewChild('fileButton') fileButton;
 
   recording: boolean = false;
+  audioPath: string;
+  audio: any;
+  path;
 
-  constructor() {}
+  constructor(
+    private file: File,
+    private media: Media,
+    private platform: Platform,
+    private fileChooser: FileChooser,
+    private filePath: FilePath,
+    private router: Router
+  ) {}
 
 
 
@@ -43,19 +59,54 @@ export class Tab1Page implements OnInit{
   }
 
   SelectFile() {
-    this.fileButton.nativeElement.click();
-  }
-
-  async fileChanged(event) {
-    const files = event.target.files;
-    //this.fileToUpload = files[0];
+    this.fileChooser.open().then((fileuri) => {
+      this.filePath.resolveNativePath(fileuri).then((resolvedPath) => {
+        this.path = resolvedPath;
+        let navigationExtras: NavigationExtras = {
+          state: {
+            path: resolvedPath
+          }
+        };
+        this.router.navigate(['music-player'], navigationExtras);
+      });
+    });
   }
 
   StartRecord() {
     console.log("recording......");
+    try {
+      let fileName =
+      'record' +
+      new Date().getDate() +
+      new Date().getMonth() +
+      new Date().getFullYear() +
+      new Date().getHours() +
+      new Date().getMinutes() +
+      new Date().getSeconds();
+      // let filePath = '';
+      if (this.platform.is('ios')) {
+        fileName = fileName + '.m4a';
+        this.audioPath = this.file.documentsDirectory + fileName;
+        this.audio = this.media.create(this.audioPath.replace(/file:\/\//g, ''));
+      } else if (this.platform.is('android')) {
+        fileName = fileName + '.mp3';
+        this.audioPath = this.file.externalDataDirectory + fileName;
+        this.audio = this.media.create(this.audioPath.replace(/file:\/\//g, ''));
+      }
+      this.audio.startRecord();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   StopRecord() {
     console.log( "stoppped recording !!");
+    this.audio.stopRecord();
+    let navigationExtras: NavigationExtras = {
+      state: {
+        path: this.audioPath
+      }
+    };
+    this.router.navigate(['music-player'], navigationExtras);
   }
 }
