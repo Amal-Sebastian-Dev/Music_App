@@ -19,11 +19,11 @@
           <div>
             <ion-icon style="color: #5fa8d3; position: absolute; right: 10px; top: 10px; background: white; padding: .5rem; font-size: 20px; border-radius: 50%;" name="tv"></ion-icon>
           </div>
-          <div class="pic">
+          <div class="pic" style="outline: none;" button (click)="viewProfile()">
             <img src="{{post.profilePic}}">
           </div>
           <div class="name">{{post.title}}</div>
-          <div class="desc">{{post.username}}</div>
+          <div class="desc" button (click)="viewProfile()">{{post.username}}</div>
           <ion-icon class="play-btn" name="play"></ion-icon>
         </div>
         <div class="card-footer">

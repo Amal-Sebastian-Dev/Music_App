@@ -1,0 +1,51 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="color: #fff;" icon="chevron-back">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="chatbox"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+
+  <div class="card light">
+    <div class="card-text">
+      <div class="card-img" *ngIf="profilePic == null">
+        <ion-icon name="person" style="font-size: 70px; position: relative; top: 20px;"></ion-icon>
+      </div>
+      <img *ngIf="profilePic != null" src={{profilePic}}>
+      <div style="text-align: center;">
+        <h2 style="color: white;">Beverly Little</h2>
+        <h5>Senior product designer</h5>
+        <button>Follow me</button>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div class="stats" style="padding: 10px 20px;">
+        <div class="value">400</div>
+        <div class="type"> POSTS </div>
+
+      </div>
+      <div class="stats">
+        <div class="value">12.8K</div>
+        <div class="type">Followers</div>
+      </div>
+      <div class="stats">
+        <div class="value">6722</div>
+        <div class="type">Following</div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

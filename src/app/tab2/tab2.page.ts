@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import * as AOS from 'aos';
 
 @Component({
@@ -64,13 +65,19 @@ export class Tab2Page {
     },
   ];
 
-  constructor() {}
+  constructor(
+    private router: Router,
+  ) {}
 
   ngOnInit() {
   }
 
   onScroll() {
     AOS.refresh();
+  }
+
+  viewProfile() {
+    this.router.navigate(['/other-profile']);
   }
 
   tagsAnim(event, tag) {

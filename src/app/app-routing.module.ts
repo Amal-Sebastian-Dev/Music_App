@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'music-player',
     loadChildren: () => import('./music-player/music-player.module').then( m => m.MusicPlayerPageModule)
+  },
+  {
+    path: 'other-profile',
+    loadChildren: () => import('./other-profile/other-profile.module').then( m => m.OtherProfilePageModule)
   }
 ];
 @NgModule({
