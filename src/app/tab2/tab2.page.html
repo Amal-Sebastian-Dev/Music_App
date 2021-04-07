@@ -11,38 +11,48 @@
 <ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="onScroll()">
 
 
-
   <div *ngFor="let post of posts" style="width: 100%; display: flex; align-items: center; justify-content: center;">
     <div class="profile-card" data-aos="zoom-in-up">
       <div class="front">
-        <div class="card-header">
+        <div class="card-header" (click)="start(post)">
           <div>
-            <ion-icon style="color: #5fa8d3; position: absolute; right: 10px; top: 10px; background: white; padding: .5rem; font-size: 20px; border-radius: 50%;" name="tv"></ion-icon>
+            <ion-icon
+              style="color: #5fa8d3; position: absolute; right: 10px; top: 10px; background: white; padding: .5rem; font-size: 20px; border-radius: 50%;"
+              name="tv"></ion-icon>
           </div>
           <div class="pic" style="outline: none;" button (click)="viewProfile()">
             <img src="{{post.profilePic}}">
           </div>
           <div class="name">{{post.title}}</div>
           <div class="desc" button (click)="viewProfile()">{{post.username}}</div>
-          <ion-icon class="play-btn" name="play"></ion-icon>
+          <!--   <ion-icon class="play-btn" name="play" button (click)="start(post)" ></ion-icon> -->
+          
         </div>
+
         <div class="card-footer">
           <div class="numbers">
             <div class="item">
-              <span><ion-icon name="heart-outline"></ion-icon></span>
+              <span>
+                <ion-icon name="heart-outline"></ion-icon>
+              </span>
               256
             </div>
             <div class="border"></div>
             <div class="item">
-              <span><ion-icon name="chatbox"></ion-icon></span>
+              <span>
+                <ion-icon name="chatbox"></ion-icon>
+              </span>
               150
             </div>
             <div class="border"></div>
             <div class="item">
-              <span><ion-icon name="share-social-sharp"></ion-icon></span>
+              <span>
+                <ion-icon name="share-social-sharp"></ion-icon>
+              </span>
               share
             </div>
           </div>
+          
         </div>
       </div>
       <div class="comments">
@@ -52,3 +62,26 @@
   </div>
 
 </ion-content>
+<ion-footer  *ngIf="activeTrack" style=background:#354555;padding-bottom:30px;>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        {{ activeTrack.title }}
+      </ion-col>
+      <ion-col size="12">
+        <ion-range #range [(ngModel)]="progress" max="100" (touchend)="seek()" (mouseup)="seek()"></ion-range>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+    
+          <ion-button fill="clear" (click)="togglePlayer(false)" *ngIf="!isPlaying">
+            <ion-icon slot="icon-only" name="play"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" (click)="togglePlayer(true)" *ngIf="isPlaying">
+            <ion-icon slot="icon-only" name="pause"></ion-icon>
+          </ion-button>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

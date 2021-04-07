@@ -1,6 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { faLessThanEqual } from '@fortawesome/free-solid-svg-icons';
+import { IonRange } from '@ionic/angular';
 import * as AOS from 'aos';
+import { Howl } from 'howler';
+
+// To enforce the data types
+export interface Posts {
+  username: string,
+  profilePic: string,
+  title: string,
+  postId: string,
+  url: string,
+  heartType: string,
+  trackPath: string
+}
 
 @Component({
   selector: 'app-tab2',
@@ -8,6 +22,14 @@ import * as AOS from 'aos';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+
+  // Sample array for tracks only
+  //  playlist: Track[] = [
+  //    {
+  //      name: 'Stereo-Hearts',
+  //      path: './assets/mp3/Stereo-Hearts.mp3'
+  //    }
+  //  ];
 
   option = {
     slidesPerView: 1.5,
@@ -22,52 +44,57 @@ export class Tab2Page {
     "Funk"
   ];
 
-  posts = [
+  posts: Posts[] = [
     {
-      username : "Username",
+      username: "Edu",
       profilePic: "../../assets/profile.jpg",
-      title: "Song Title",
+      title: "Stereo Hearts",
       postId: "1",
       url: "url of post",
-      heartType: 'heart'
+      heartType: 'heart',
+      trackPath: './assets/mp3/Stereo-Hearts.mp3'
     },
     {
-      username : "user01",
+      username: "user01",
       profilePic: "../../assets/profile.jpg",
       title: "title",
       postId: "1",
       url: "url of post",
-      heartType: 'heart'
+      heartType: 'heart',
+      trackPath: ''
     },
     {
-      username : "user01",
+      username: "user01",
       profilePic: "../../assets/profile.jpg",
       title: "title",
       postId: "1",
       url: "url of post",
-      heartType: 'heart'
+      heartType: 'heart',
+      trackPath: ''
     },
     {
-      username : "user01",
+      username: "user01",
       profilePic: "../../assets/profile.jpg",
       title: "title",
       postId: "1",
       url: "url of post",
-      heartType: 'heart'
+      heartType: 'heart',
+      trackPath: ''
     },
     {
-      username : "user01",
+      username: "user01",
       profilePic: "../../assets/profile.jpg",
       title: "title",
       postId: "1",
       url: "url of post",
-      heartType: 'heart'
+      heartType: 'heart',
+      trackPath: ''
     },
   ];
 
   constructor(
     private router: Router,
-  ) {}
+  ) { }
 
   ngOnInit() {
   }
@@ -109,19 +136,56 @@ export class Tab2Page {
     }
   }
 
-  playAudio() {
+  player: Howl = null;
+  activeTrack: Posts = null;
+  isPlaying = false;
+  progress = 0;
+  @ViewChild('range', { static: false }) range: IonRange;
 
+  start(post) {
+    if (this.player) {
+      this.player.stop();
+    }
+    this.player = new Howl({
+      src: [post.trackPath],
+
+      onplay: () => {
+        this.isPlaying = true;
+        this.activeTrack = post;
+        this.updateProgress();
+      },
+      onend: () => {
+
+      }
+    });
+
+    this.player.play();
   }
 
-  resumeAudio() {
+  togglePlayer(pause) {
+    this.isPlaying = !pause;
+    if (pause) {
+      this.player.pause();
+    } else {
+      this.player.play();
+    }
+  }
 
+  seek() {
+    let newValue = +this.range.value;
+    let duration = this.player.duration();
+    this.player.seek(duration * (newValue/100));
+  }
+
+  updateProgress() {
+    let seek = Number(this.player.seek());
+    this.progress = (seek / this.player.duration()) * 100 || 0;
+    setTimeout(() => {
+      this.updateProgress();
+    }, 1000)
   }
 
   likePost() {
-
-  }
-
-  pauseAudio() {
 
   }
 
