@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Audiowide';
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/Audiowide/Audiowide-normal-400.eot);
+  src: local('Audiowide'), url(assets/Audiowide/Audiowide-normal-400.svg#Audiowide) format('svg'), url(assets/Audiowide/Audiowide-normal-400.eot?#iefix) format('embedded-opentype'), url(assets/Audiowide/Audiowide-normal-400.woff) format('woff'), url(assets/Audiowide/Audiowide-normal-400.woff2) format('woff2'), url(assets/Audiowide/Audiowide-normal-400.ttf) format('truetype');
+}
+

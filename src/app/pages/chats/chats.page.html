@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="sideButtons()">
+        <ion-icon id="top-btn" style="transition: 0.4s; font-size: 25px; color: #ff28e9;" name="reorder-four"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="!searchBarEnabled" slot="end" (click)="enableSearchBar()">
+      <ion-button>
+        <ion-icon style="transition: 0.4s; font-size: 20px; color: #ff28e9;" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="searchBarEnabled" slot="end" (click)="disableSearchBar()">
+      <ion-button>
+        <ion-icon style="transition: 0.4s; font-size: 20px; color: #ff28e9;" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-input [class]="searchBarEnabled ? 'normal-input' : 'hide-input'" style="transition: 0.5s; background-color: white; border-radius: 10px; height: 25px; font-size: 12.5px; position: relative; "  placeholder="Type here...." (ionInput)="searching($event)"></ion-input>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-icon id="upload-btn" class="side-btn" name="add" (click)="uploadPage()"></ion-icon>
+  <ion-icon id="profile-btn" class="side-btn" name="person-sharp" (click)="profilePage()"></ion-icon>
+  <ion-icon id="home-btn" class="side-btn" name="grid" (click)="homePage()"></ion-icon>
+  <ion-icon id="tv-btn" class="side-btn" name="tv" (click)="tvPage()"></ion-icon>
+
+  <ion-spinner style="width: 40px; height: 40px; position: absolute; left: 50%; top: 50%; transform: translate(-40%, -50%);" *ngIf="backupList == null" name="crescent" color='secondary'></ion-spinner>
+
+
+  <ion-list style="background: none;" class="margin-bottom ion-no-padding">
+    <ion-item  style="--background: none; --border-color: #ff28e9;" *ngFor="let user of chatUsersDetails" class="ion-activatable">
+      <ion-avatar style="width: 50px; height: 50px;" (click)="viewProfile(user.uid)" slot="start">
+        <img [src]="user?.profilePic" />
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-avatar>
+      <ion-label (click)="goToChat(user.uid)" class="ion-text-wrap">
+        <h2 class="text-height">
+          <strong style="color: white;">{{ user?.username }}</strong>
+          <p style="color: rgb(153, 152, 152);" class="ion-float-end">{{ user?.time }}</p>
+        </h2>
+        <div style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+          <p [class]="user.status == 'online' ? 'online-status' : 'offline-status'">{{user.status}}</p>
+          <p style="color: #2dd36f;">3</p>
+        </div>
+      </ion-label>
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

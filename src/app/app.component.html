@@ -1,3 +1,23 @@
-<ion-app>
+<ion-content>
   <ion-router-outlet></ion-router-outlet>
-</ion-app>
+
+  <ion-toolbar id="miniPlayer" [class]="isPlaying ? 'goUp' : 'goDown'" style="width: 98%; z-index: 100; left: 50%; border-radius: 20px; transform: translateX(-50%); background: transparent;">
+    <ion-item style="--background: #231444;">
+      <ion-thumbnail slot="start" style="--border-radius: 20px;">
+        <img src={{songData.pic}}>
+      </ion-thumbnail>
+      <ion-label>
+        <h2 style="text-overflow: ellipsis; color: white;">{{songData.songName}}</h2>
+        <p style="color: gray;">{{songData.songName}}</p>
+      </ion-label>
+      <p class="time" style='color: white; font-size: 15px; margin-right: 2px;'>{{roundedProgress}}</p>
+      <ion-button style="--background: none;" (click)="pauseAudio()">
+        <ion-icon [name]="miniPlayerIcon"></ion-icon>
+      </ion-button>
+      <ion-button style="--background: none;" (click)="cancelAudio()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-range (click)='seek()' (touchend)='seek()' (mouseup)='seek()' #range min='0' max='100' [(ngModel)]="progress" style='--background: white; position: relative; left: 50%; transform: translateX(-50%); z-index: 15px; top: -30px; width: 100%'></ion-range>
+  </ion-toolbar>
+</ion-content>

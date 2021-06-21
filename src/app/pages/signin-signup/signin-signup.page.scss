@@ -1,0 +1,185 @@
+@font-face {
+  font-family: 'Audiowide';
+
+  src: url('../../../assets/Audiowide/Audiowide-normal-400.ttf')// to your font file
+}
+
+.scroll-content {
+    padding-bottom: 0 !important;
+ }
+
+ion-content {
+  --overflow: hidden;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  --background: linear-gradient(-218deg, #231444 48%, #442e71 75%);
+  color: #fff;
+
+  button {
+    outline: none;
+  }
+}
+
+.login-box {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  height: 400px;
+  transform: translate(-50%, -50%);
+  transition: 0.1s;
+}
+
+.signup-box {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 40%;
+  left: 150%;
+  height: 440px;
+  transform: translate(-50%, -40%);
+  transition: 0.1s;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  background-image: linear-gradient(-218deg, #0b0121 50%, #231444 66%);
+  border-radius: 15px;
+  box-shadow: 0 0 3px #0b012185, 0 0 5px #0b012185, 0 0 15px #0b012185, 0 0 40px #0b012185;
+}
+
+.login h1 {
+  text-align: center;
+  font-size: 22px;
+  color: white;
+  margin-bottom: 2rem;
+  font-family: 'Audiowide';
+}
+
+.login .input-container {
+  position: relative;
+  width: 100%;
+  margin: 0.5rem 0 0.125rem 0;
+
+  input::placeholder {
+    color: #b6b6b6;
+  }
+
+  input, ion-input {
+    color: white;
+    width: 100%;
+    border-style: solid;
+    border-color: #633fb3;
+    background: rgba(255, 255, 255, 0);
+    border-width: 2px;
+    outline: none;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1em 2em 1em 4em;
+    font-size: 14px;
+    box-shadow: 0 0 3px #0b012185, 0 0 5px #0b012185, 0 0 15px #0b012185, 0 0 40px #0b012185;
+  }
+
+  ion-input {
+    --padding-start: 4em;
+    --padding-end: 2em;
+    --padding-top: 1em;
+    --padding-bottom: 1em;
+  }
+
+  .icon {
+    position: relative;
+    align-self: flex-end;
+    top: -33px;
+    left: 20px;
+    color: white;
+    display: block;
+  }
+}
+
+.login label {
+  color: white;
+}
+
+.login-remember {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.login-remember-text {
+  font-family: serif;
+  font-size: 14px;
+  color: #859bce;
+
+}
+
+.login button {
+  cursor: pointer;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 15px;
+  font-weight: 700;
+  color: #fff;
+  background: #633fb3;
+}
+
+.login-separator {
+  width: 70%;
+  margin: auto;
+  height: 2px;
+  background: #633fb3;
+  margin-top: 15px;
+}
+
+.bottom-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 85%;
+  left: 50%; transform: translateX(-50%);
+  text-align: center;
+
+  h6 {
+    color: #9581c2;
+    font-weight: 700;
+  }
+
+  button {
+    position: relative;
+    width: 90px;
+    transition: 0.1s;
+    font-size: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 500;
+    padding: 15px;
+    border-radius: 10px;
+    color: #fff;
+    background: #633fb3;
+    font-family: 'Audiowide';
+  }
+
+  #login-btn {
+    bottom: -55px;
+  }
+}
+
+
+
+
+
+
+

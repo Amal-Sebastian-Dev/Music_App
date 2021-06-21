@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="sideButtons()">
+      <ion-button>
+        <ion-icon slot="icon-only" id="top-btn" style="transition: 0.4s; font-size: 25px; color: #ff28e9;" name="reorder-four"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button [disabled]="recording == true" (click)="selectAudio()">
+        <ion-icon slot="icon-only" style="color: #ff28e9;" name="folder-open-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scroll="false">
+
+  <ion-icon id="upload-btn" class="side-btn" name="grid" (click)="homePage()"></ion-icon>
+  <ion-icon id="chat-btn" class="side-btn" name="chatbox-ellipses" (click)="chatsPage()"></ion-icon>
+  <ion-icon id="profile-btn" class="side-btn" name="person-sharp" (click)="profilePage()"></ion-icon>
+  <ion-icon id="tv-btn" class="side-btn" name="tv" (click)="tvPage()"></ion-icon>
+
+  <div id="record" class="record-window" style="display: flex; align-items: center; justify-content: center; opacity: 0">
+    <div style="background-color: white; width: 40%; height: 20%; border-radius: 20px; display: flex;">
+      <div id="ring" [class]="recording ? 'ring' : ''" style="position: relative; top: 50%; left: 50%; border-radius: 50%; transform: translate(-50%, -50%); background: none; border: 2px solid #2dd36f;">
+
+      </div>
+      <div style="position: fixed; top: 50%; left: 50%; border-radius: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; background: none; border: 2px solid #2dd36f;">
+
+      </div>
+      <ion-icon (click)="cancelRecord()" slot="icon-only" style="position: fixed; top: 42%; left: 66%; transform: translate(-66%, -42%); width: 20px; height: 20px; color: #2dd36f;" name="close"></ion-icon>
+      <ion-icon style="width: 30px; height: 30px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #2dd36f;" name="mic"></ion-icon>
+    </div>
+  </div>
+
+  <ion-button *ngIf='recording == false' (click)='captureAudio()' style='--background: transparent !important; color: #ff28e9; position:absolute; top: 50%; left: 50%; transform:translate(-50%, -50%);'>
+    <ion-icon slot='icon-only' name='mic-outline'></ion-icon>
+  </ion-button>
+
+  <ion-button *ngIf='recording == true' (click)='stopRecord()' style='--background: transparent !important; color: #ff28ea81; position:absolute; top: 50%; left: 50%; transform:translate(-50%, -50%);'>
+    <ion-icon slot='icon-only' name='mic-off-outline'></ion-icon>
+  </ion-button>
+
+  <div [class]="recording ? 'audio-input-show' : 'audio-input-hide'" style="width: 40%; height: auto; left: 50%; transform: translateX(-50%); border-radius: 20px; background-color: none; color: #ff28e9; transition: all 0.5s; position: absolute; display: flex; justify-content: space-between; padding-left: 20px; padding-right: 20px;">
+    <ion-icon (click)="playPauseRecord()" style="width: 20px; height: 20px;" [name]="pause ? 'play' : 'pause'"></ion-icon>
+    <ion-icon (click)="stopRecord()" style="width: 20px; height: 20px;" name="stop"></ion-icon>
+    <ion-icon (click)="cancelRecord()" style="width: 20px; height: 20px;" name="close"></ion-icon>
+  </div>
+</ion-content>

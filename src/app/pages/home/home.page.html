@@ -1,0 +1,124 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="sideButtons()">
+      <ion-button>
+        <ion-icon slot="icon-only" id="top-btn" style="transition: 0.4s; font-size: 25px; color: #ff28e9;" name="reorder-four"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="!searchBarEnabled" slot="end" (click)="enableSearchBar()">
+      <ion-button>
+        <ion-icon slot="icon-only" style="color: #ff28e9;" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="searchBarEnabled" slot="end" (click)="disableSearchBar()">
+      <ion-button>
+        <ion-icon style="color: #ff28e9;" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-input [class]="searchBarEnabled ? 'normal-input' : 'hide-input'" style="transition: 0.25s; background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px; height: 25px; font-size: 12.5px; position: relative; "  placeholder="Type here...." (ionInput)="searching($event)"></ion-input>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+
+  <ion-icon id="upload-btn" class="side-btn" name="add" (click)="uploadPage()"></ion-icon>
+  <ion-icon id="chat-btn" class="side-btn" name="chatbox-ellipses" (click)="chatsPage()"></ion-icon>
+  <ion-icon id="profile-btn" class="side-btn" name="person-sharp" (click)="profilePage()"></ion-icon>
+  <ion-icon id="tv-btn" class="side-btn" name="tv" (click)="tvPage()"></ion-icon>
+
+
+  <div *ngIf="posts != null" style="position: absolute; width: 100%;">
+    <div *ngFor="let post of posts; let i = index" class="main-container" data-aos="zoom-in-up">
+      <div class="profile-card">
+        <ion-avatar class="header" >
+          <img src="{{post.pic}}"/>
+          <div class="color-overlay"></div>
+          <div class="details">
+            <h1 class="username" button (click)="viewOtherProfile(post.authorID)">@{{post.authorName}}</h1>
+            <div class="play-and-song-name">
+              <ion-icon button *ngIf="post.loading == false" (click)="playAudio(post, i)" class="play-btn" name="play"></ion-icon>
+              <ion-spinner *ngIf="post.loading == true" button (click)="cancelAudioLoad()" name="crescent" color='secondary' style="position: relative; top: -8px;"></ion-spinner>
+              <div class="auto-marquee">
+                <p class="song-name">{{post.name}}</p>
+              </div>
+            </div>
+          </div>
+        </ion-avatar>
+
+        <div class="footer">
+          <div class="numbers">
+            <div class="item" (click)="likeOrDislike(post)">
+              <span><ion-icon [name]="post.heartType"></ion-icon></span>
+              {{post.likes}}
+            </div>
+            <div class="border"></div>
+            <div class="item" (click)='openComments(post.postID)'>
+              <span><ion-icon name="chatbox"></ion-icon></span>
+              {{post.comments}}
+            </div>
+            <div class="border"></div>
+            <div class="item">
+              <span><ion-icon name="share-social-sharp"></ion-icon></span>
+              SHARE
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 100%; height: 120px;">
+
+    </div>
+  </div>
+
+
+  <div *ngIf="posts.length <= 0 || loading == true" style="position: absolute; width: 100%;">
+    <ion-list style="background: none;">
+      <ion-item style="--background: none;" lines='none'>
+        <ion-thumbnail style="background: #2e1a5a; --border-radius: 5%; position: relative; left: 50%; transform: translateX(-50%); width: 80%; height: 300px;">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+      </ion-item>
+      <ion-item style="--background: none;" lines='none'>
+        <ion-thumbnail  style="background: #2e1a5a; --border-radius: 5%; position: relative; left: 50%; transform: translateX(-50%); width: 80%; height: 300px;">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+
+  <!--
+    <ion-toolbar id="miniPlayer">
+      <ion-item style="margin-top: 5px; margin-left: 5px; margin-right: 5px; --background: #231444;" *ngIf="currPlayingPost != null">
+        <ion-thumbnail slot="start" >
+          <img style="border-radius: 20px" src="{{currPlayingPost.pic}}"/>
+        </ion-thumbnail>
+        <ion-label>
+          <h2 style="text-overflow: ellipsis; color: white;">{{currPlayingPost.name}}</h2>
+          <p style="color: gray;">{{currPlayingPost.authorName}}</p>
+        </ion-label>
+        <p class="time" style='color: white; font-size: 15px; margin-right: 2px;'>{{roundedProgress}}</p>
+        <ion-button style="--background: none;" (click)="pauseAudio()">
+          <ion-icon [name]="miniPlayerIcon"></ion-icon>
+        </ion-button>
+        <ion-button style="--background: none;" (click)="cancelAudio()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-range (click)='seek()' (touchend)='seek()' (mouseup)='seek()' #range min='0' max='100' [(ngModel)]='progress' style='--background: white; position: relative; left: 50%; transform: translateX(-50%); z-index: 15px; top: -30px; width: 100%'></ion-range>
+    </ion-toolbar>
+  -->
+
+
+
+
+
+
+
+
+</ion-content>
+
+
+

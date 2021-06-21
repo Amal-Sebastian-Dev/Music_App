@@ -1,0 +1,15 @@
+{
+	"appId": "com.d2r.musicapp",
+	"appName": "Music App",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		}
+	}
+}

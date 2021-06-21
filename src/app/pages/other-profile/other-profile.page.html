@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button  style="color: #ff28e9;" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button style="color: #ff28e9; font-size: 20px;" (click)="goToChat()">
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="card light">
+    <div class="card-text">
+      <div class="card-img" *ngIf="profilePic == null || profilePic == ''"></div>
+      <ion-avatar *ngIf="profilePic != null" class="profile-img">
+        <img src="{{profilePic}}"/>
+      </ion-avatar>
+      <div style="text-align: center;">
+        <h2 style="color: white;">{{username}}</h2>
+        <h5>Senior product designer</h5>
+        <button (click)="subscribeAndUnsubscribe(subscribed)">{{subscribed ? 'subscribing' : 'subscribe'}}</button>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div class="stats" style="padding: 10px 20px;">
+        <div class="value">{{this.posts.length}}</div>
+        <div class="type"> POSTS </div>
+
+      </div>
+      <div button (click)="listUsers('subscribers')" class="stats">
+        <div class="value">{{subscribers}}</div>
+        <div class="type">subscribers</div>
+      </div>
+      <div button (click)="listUsers('subscribing')" class="stats">
+        <div class="value">{{subscribing}}</div>
+        <div class="type">subscribing</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 110px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <ion-item *ngFor="let post of posts; let i = index" style=" margin-bottom: 5px; border-radius: 10px; width: 95%; --background:none; border-width: 2px; border-style: solid; border-color: #633fb3;">
+      <ion-thumbnail slot="start" >
+        <img style="border-radius: 20px" src="{{post.pic}}"/>
+      </ion-thumbnail>
+      <div style="display: flex; flex-direction: column;">
+        <ion-label class="auto-marquee">
+          <h2 class="song">{{post.name}}</h2>
+        </ion-label>
+        <div style="margin-left: 3px; display: flex; flex-direction: row; margin-top: 5px; color: white;">
+          <div (click)="likeOrDislike(post)">
+            <ion-icon style="color: #ff28e9; font-size: 20px;" [name]="post.heartType"></ion-icon>
+            <span style="font-size: 11px; margin-top: 8px; margin-left: 2px;">{{post.likes}}</span>
+          </div>
+          <div style="margin-left: 5px;" button (click)="openComments(post.postID)">
+            <ion-icon style="color: #ff28e9; font-size: 20px; margin-left: 10px;" name="chatbubble-outline"></ion-icon>
+            <span style=" font-size: 11px; margin-top: 8px; margin-left: 2px;">{{post.comments}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div slot="end">
+        <ion-button *ngIf="post.loading == false" (click)="playAudio(post, i)" style="--background: none;">
+          <ion-icon name="play"></ion-icon>
+        </ion-button>
+        <ion-button style="--background: none;" *ngIf="post.loading == true" (click)="cancelAudioLoad()">
+          <ion-spinner name="crescent" color='secondary'></ion-spinner>
+        </ion-button>
+        <ion-button style="--background: none;">
+          <ion-icon name="share-social-sharp"></ion-icon>
+        </ion-button>
+      </div>
+
+    </ion-item>
+  </div>
+
+  <div style="width: 100%; height: 140px;">
+
+  </div>
+
+</ion-content>

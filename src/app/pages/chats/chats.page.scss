@@ -1,0 +1,70 @@
+ion-header {
+  --background-color: transparent;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+  //--background: #541585;
+}
+
+ion-content {
+  --background: #231444;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+
+
+.side-btn {
+  z-index: 15;
+  position: fixed;
+  left: -50px;
+  background: white;
+  color: #4facfe;
+  padding: .5rem;
+  font-size: 25px;
+  border-radius: 50%;
+}
+
+#upload-btn {
+  top: 10%;
+  transition: left 0.4s, color 0.2s, background 0.2s;
+}
+
+#profile-btn {
+  top: 17%;
+  transition: left 0.6s, color 0.2s, background 0.2s;
+}
+
+#home-btn {
+  top: 24%;
+  transition: left 0.8s, color 0.2s, background 0.2s;
+}
+
+#tv-btn {
+  top: 31%;
+  transition: left 1s, color 0.2s, background 0.2s;
+}
+
+
+.normal-input {
+  z-index: 5;
+  width: 95%;
+  right: -10px;
+}
+
+.hide-input {
+  z-index: -1;
+  width: 0px;
+  right: -150px;
+}
+
+.online-status {
+  color: #2dd36f;
+}
+
+.offline-status {
+  color: #889bc7;
+}

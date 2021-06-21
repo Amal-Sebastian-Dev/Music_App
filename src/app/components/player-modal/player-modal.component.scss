@@ -1,0 +1,150 @@
+@font-face {
+  font-family: 'Audiowide';
+
+  src: url('../../../assets/Audiowide/Audiowide-normal-400.ttf')// to your font file
+}
+
+ion-header {
+  --background-color: transparent;
+  --background: #231444;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+  --background: #231444;
+}
+
+ion-content {
+  --background: #231444;
+  font-family: 'Audiowide';
+  box-sizing: border-box;
+  text-decoration: none;
+
+  .input-section {
+
+    width: 100%;
+
+        // colors
+    $input-background: rgba(57, 63, 84, 0.8);
+    $input-text-inactive: #7881A1;
+    $input-text-active: #BFD2FF;
+
+    // gradient animation
+    @keyframes gradient {
+      0%{background-position:0 0}
+      100%{background-position:100% 0}
+    }
+
+    input {
+      border-style: none;
+      background: transparent;
+      outline: none;
+    }
+
+    .webflow-style-input {
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0px;
+      position: absolute;
+      display: flex;
+      flex-direction: row;
+      width: 300px;
+      border-radius: 5px;
+      padding: .1rem 0rem .1rem;
+      background: $input-background;
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: 999;
+        height: 2px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+        background-position: 0% 0%;
+        background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
+        background-size: 500% auto;
+        animation: gradient 3s linear infinite;
+      }
+    }
+
+    .webflow-style-input input {
+      margin-left: 10px;
+      margin-right: 10px;
+      flex-grow: 1;
+      color: $input-text-active;
+      font-size: 1.1rem;
+      line-height: 2.4rem;
+      vertical-align: middle;
+      &::-webkit-input-placeholder {
+        color: $input-text-inactive;
+      }
+    }
+
+    ion-item {
+      position: relative;
+      width: 300px;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 50px;
+      border-radius: 5px;
+      --background: rgba(57, 63, 84, 0.8);
+      color: #BFD2FF;
+
+      ion-select {
+        --background: rgba(57, 63, 84, 0.8);
+      }
+
+      ion-select-option {
+        --background: rgba(57, 63, 84, 0.8);
+      }
+    }
+  }
+
+  .container {
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 90%;
+    position: absolute;
+    bottom: 10px;
+  }
+
+
+  .card-text {
+    color: black;
+    height: fit-content;
+    width: 100%;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 30px;
+
+    .profile-img {
+      text-align: center;
+      position: relative;
+      height: 225px;
+      width: 300px;
+      border-radius: 6%;
+      --border-radius: 6%;
+      margin: auto;
+      margin-bottom: 10px;
+      box-shadow: 2px 5px 15px rgb(0 0 0 / 90%);
+    }
+
+    .card-img {
+      text-align: center;
+      position: relative;
+      height: 225px;
+      width: 300px;
+      background-size: cover;
+      color: rgb(209, 209, 209);
+      border-radius: 6%;
+      --border-radius: 6%;
+      margin: auto;
+      margin-bottom: 10px;
+      box-shadow: 2px 5px 15px rgb(0 0 0 / 90%);
+    }
+  }
+}
+

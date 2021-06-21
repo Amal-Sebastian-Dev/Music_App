@@ -1,0 +1,222 @@
+@font-face {
+  font-family: 'Audiowide';
+
+  src: url('../../../assets/Audiowide/Audiowide-normal-400.ttf')// to your font file
+}
+
+ion-header {
+  --background-color: transparent;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+ion-content {
+  --background: #231444;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.side-btn {
+  z-index: 15;
+  position: fixed;
+  left: -50px;
+  background: white;
+  color: #4facfe;
+  padding: .5rem;
+  font-size: 25px;
+  border-radius: 50%;
+}
+
+#upload-btn {
+  top: 10%;
+  transition: left 0.4s, color 0.2s, background 0.2s;
+}
+
+#chat-btn {
+  top: 17%;
+  transition: left 0.6s, color 0.2s, background 0.2s;
+}
+
+#profile-btn {
+  top: 24%;
+  transition: left 0.8s, color 0.2s, background 0.2s;
+}
+
+#tv-btn {
+  top: 31%;
+  transition: left 1s, color 0.2s, background 0.2s;
+}
+
+.main-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .profile-card {
+    min-height: 300px;
+    width: 80%;
+    text-align: center;
+    overflow: hidden;
+
+
+    .header {
+      --border-radius: 5%;
+      min-height: 225px;
+      min-width: 100%;
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+      background: #2e1a5a;
+
+      .color-overlay {
+        z-index: 0;
+        bottom: 0px;
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient(to bottom, rgba(51, 51, 51, 0), rgba(51, 51, 51, 0.219), rgb(19, 18, 18));
+        opacity: 1;
+        position: absolute;
+      }
+
+      .details {
+        z-index: 1;
+        position: absolute;
+        bottom: 0px;
+
+        .username {
+          font-size: 15px;
+          left: 15px;
+          bottom: 40px;
+          position: absolute;
+          color: white;
+        }
+
+        .play-and-song-name {
+          width: 100%;
+          display: inline-flex;
+          margin-left: 8px;
+
+          .play-btn, .pause-btn {
+            bottom: 12px;
+            font-size: 25px;
+            color: white;
+            margin-top: 12px;
+            position: absolute;
+          }
+
+          .auto-marquee {
+            min-width: 270px;
+            max-width: 270px;
+            overflow: hidden;
+            text-align: left;
+            position: absolute;
+            bottom: -7px;
+            left: 30px;
+            margin-left: 15px;
+
+            .song-name {
+              font-size: 20px;
+              color: white;
+              width: max-content;
+            }
+          }
+
+          .auto-marquee > .song-name {
+            display: inline-block;
+            min-width: 100%;
+            white-space: nowrap;
+            animation: marquee-when-overflow 5s linear infinite;
+          }
+        }
+      }
+    }
+
+    .footer {
+      min-height: 55px;
+      width: 100%;
+      border-bottom-left-radius: 9px;
+      border-bottom-right-radius: 9px;
+      background-color: white;
+      padding-top: 10px;
+      padding-bottom: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+
+      .numbers {
+        display: flex;
+
+        .item {
+          flex: 1;
+          font-size: 13px;
+          color: #fa71cd;
+          font-weight: 500;
+
+          span {
+            display: block;
+            color: #a447da;
+            font-size: 20px;
+          }
+        }
+
+        .border {
+          width: 1px;
+          height: 50px;
+          background: #bbb;
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+@keyframes marquee-when-overflow{
+  20% {
+    transform: translateX(0);
+  }
+  80% {
+    transform: translateX(calc(-100% + 13.5em));
+  }
+  100% {
+    transform: translateX(calc(-100% + 13.5em));
+  }
+}
+
+
+
+#miniPlayer {
+  border-radius: 80px;
+  transition: 1s;
+  position: fixed;
+  bottom: -200px;
+  color: #222f3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .time {
+    font-family: 'Audiowide';
+  }
+}
+
+.normal-input {
+  z-index: 5;
+  width: 95%;
+  right: -10px;
+}
+
+.hide-input {
+  z-index: -1;
+  width: 0px;
+  right: -150px;
+}
+
+
+
+
+
+

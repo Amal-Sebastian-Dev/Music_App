@@ -1,0 +1,157 @@
+@font-face {
+  font-family: 'Audiowide';
+
+  src: url('../../../assets/Audiowide/Audiowide-normal-400.ttf')// to your font file
+}
+
+ion-header {
+  --background-color: transparent;
+  --background: #231444;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+  --background: #541585;
+}
+
+ion-content {
+  --background: #231444;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+
+
+
+  .input-section {
+    width: 90%;
+    padding-left: 5px;
+    padding-right: 5px;
+    --padding-start: 5px;
+    --padding-end: 5px;
+    position: absolute;
+
+    --border-radius: 20px;
+    --background: #231444;
+    --border-color: #ff28e9;
+    --border-width: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    ion-input {
+      --padding-start: 5px;
+      --padding-end: 8px;
+      color: #889bc7;
+    }
+
+    ion-button {
+      --background: white;
+      color: #ff28e9;
+    }
+  }
+
+
+}
+
+
+
+
+
+@media (max-width: 412px) {
+
+  .skeleton-text {
+    ion-item {
+      margin-bottom: 10px;
+    }
+  }
+
+  .input-section {
+    bottom: 8px;
+  }
+
+  .comment-section {
+    overflow-y: scroll;
+    max-height: 100%;
+    background: transparent;
+    width: 90%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    ion-avatar {
+      img {
+        position: relative;
+        top: 12px;
+        margin-left:-5px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    .username, .time {
+      font-size: 14px;
+    }
+
+    .comment {
+      font-size: 13px;
+    }
+  }
+}
+
+
+@media (max-width: 360px) {
+
+  .skeleton-text {
+    ion-item {
+      margin-bottom: 0px;
+    }
+  }
+
+  .input-section {
+    bottom: 5px;
+  }
+
+  .comment-section {
+    overflow-y: scroll;
+    max-height: 100%;
+    background: transparent;
+    width: 90%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    ion-avatar {
+      img {
+        position: relative;
+        top: 13px;
+        margin-left:-5px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .username, .time {
+      font-size: 14px;
+    }
+
+    .comment {
+      font-size: 13px;
+    }
+  }
+}
+
+.normal-input {
+  width: 100%;
+}
+
+.shorter-input {
+  width: 88%;
+}
+
+.normal-btn {
+  right: -50px;
+}
+
+.slide-btn {
+  right: 0px;
+}

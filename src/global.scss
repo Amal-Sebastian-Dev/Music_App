@@ -24,3 +24,71 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.popOver {
+  ion-backdrop {
+    background-color: black;
+  }
+
+  .popover-wrapper {
+    .popover-content {
+      width: 40vw;
+      text-align: center;
+    }
+  }
+}
+
+
+.bottom-player-modal .modal-wrapper {
+  height: 20%;
+  top: 80%;
+  position: absolute;
+  display: block;
+  --backdrop-opacity: var(--ion-backdrop-opacity, 0);
+}
+
+
+.attach-drawer-css .modal-wrapper {
+  background: #231444;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 40%;
+  bottom: 0px;
+  position: absolute;
+  display: block;
+}
+
+
+.reply-alert {
+
+  --background: #231444;
+
+  .alert-input-wrapper {
+    margin-top: -20px;
+    color: white;
+  }
+
+  .alert-input-group {
+    margin-top: -20px;
+  }
+
+  .alert-input {
+    color: white;
+  }
+
+  .alert-message {
+
+    .comment-details {
+      margin-bottom: 0px;
+    }
+
+    .username {
+      color: white;
+    }
+
+    .comment {
+      color: #889bc7;
+    }
+  }
+}

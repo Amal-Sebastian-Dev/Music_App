@@ -1,0 +1,53 @@
+<ion-content style="--background: #231444;">
+
+  <div class="drawer" #drawer style="background: #231444; margin-top: 30px;">
+    <ion-grid>
+      <ion-row>
+        <div style="padding-left: 30px; padding-right: 30px; width: 100%; display: flex; justify-content: space-between;">
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <ion-fab-button (click)="selectFile('image/*')">
+              <ion-icon name="image"></ion-icon>
+            </ion-fab-button>
+            <ion-label style="margin-top: 5px;">Image</ion-label>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <ion-fab-button>
+              <ion-icon (click)="takePhoto()" name="camera"></ion-icon>
+            </ion-fab-button>
+            <ion-label style="margin-top: 5px;">Camera</ion-label>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <ion-fab-button (click)="selectFile('audio/*')">
+              <ion-icon name="headset"></ion-icon>
+            </ion-fab-button>
+            <ion-label style="margin-top: 5px;">Audio</ion-label>
+          </div>
+        </div>
+      </ion-row>
+      <ion-row>
+        <div style="margin-top: 20px; padding-left: 30px; padding-right: 30px; width: 100%; display: flex; justify-content: space-between;">
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <ion-fab-button (click)="takeVideo()">
+              <ion-icon name="videocam"></ion-icon>
+            </ion-fab-button>
+            <ion-label style="margin-top: 5px;">Record</ion-label>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <ion-fab-button style="font-size: 25px;" (click)="selectFile('video/*')">
+              <fa-icon icon="file-video"></fa-icon>
+            </ion-fab-button>
+            <ion-label style="margin-top: 5px;">Video</ion-label>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <ion-fab-button (click)="selectFile('application/*')">
+              <ion-icon name="document-text"></ion-icon>
+            </ion-fab-button>
+            <ion-label style="margin-top: 5px;">Docs</ion-label>
+          </div>
+        </div>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+

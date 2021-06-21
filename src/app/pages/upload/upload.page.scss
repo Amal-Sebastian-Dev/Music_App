@@ -1,0 +1,101 @@
+ion-header {
+  --background-color: transparent;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+ion-content {
+  --background: #231444;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.side-btn {
+  z-index: 15;
+  position: fixed;
+  left: -50px;
+  background: white;
+  color: #4facfe;
+  padding: .5rem;
+  font-size: 25px;
+  border-radius: 50%;
+}
+
+#upload-btn {
+  top: 10%;
+  transition: left 0.4s, color 0.2s, background 0.2s;
+}
+
+#chat-btn {
+  top: 17%;
+  transition: left 0.6s, color 0.2s, background 0.2s;
+}
+
+#profile-btn {
+  top: 24%;
+  transition: left 0.8s, color 0.2s, background 0.2s;
+}
+
+#tv-btn {
+  top: 31%;
+  transition: left 1s, color 0.2s, background 0.2s;
+}
+
+.record-window {
+  background-color: none;
+  z-index: -1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0px;
+  height: 0px;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s;
+}
+
+.grow {
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+}
+
+.ring {
+  width: 40px;
+  height: 40px;
+  animation: ring-anim;
+  animation-delay: 0.5s;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes ring-anim {
+  0% {
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+.audio-input-hide {
+  bottom: -50px;
+  z-index: -1;
+}
+
+.audio-input-show {
+  bottom: 20px;
+  z-index: 5;
+}

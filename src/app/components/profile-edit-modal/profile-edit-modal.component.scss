@@ -1,0 +1,67 @@
+ion-header {
+  --background-color: transparent;
+  --background: transparent;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+.scroll-content {
+    padding-bottom: 0 !important;
+ }
+
+ion-content {
+  --background: #541585;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+
+  ion-item {
+    color: white;
+    --background: transparent;
+    --border-color: white;
+    width: 85%;
+  }
+
+  .inputs {
+    ion-item.item-has-focus > ion-label{
+      color: #2dd36f !important;
+    }
+  }
+
+  .card-text {
+    color: black;
+    height: fit-content;
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+    .profile-img {
+      text-align: center;
+      position: relative;
+      height: 170px;
+      width: 170px;
+      border-radius: 40%;
+      --border-radius: 40%;
+      margin: auto;
+      margin-bottom: 10px;
+      box-shadow: 2px 5px 15px rgb(0 0 0 / 90%);
+    }
+
+    .card-img {
+      text-align: center;
+      position: relative;
+      height: 170px;
+      width: 170px;
+      background-size: cover;
+      color: rgb(209, 209, 209);
+      border-radius: 40%;
+      margin: auto;
+      margin-bottom: 10px;
+      box-shadow: 2px 5px 15px rgb(0 0 0 / 90%);
+    }
+  }
+}

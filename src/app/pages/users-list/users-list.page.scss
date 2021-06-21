@@ -1,0 +1,39 @@
+ion-content {
+  --background: #231444;
+}
+ion-toolbar {
+  --background: #231444;
+}
+
+button {
+  border-radius: 10px;
+  text-transform: uppercase;
+  border: none;
+  //padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100px;
+  font-weight: 700;
+  font-size: 10px;
+  color: white;
+  //margin-top: 15px;
+  background-image: linear-gradient(90deg, #d400ff 0%, #d108a5 36%, #ff006a 100%);
+  outline: none;
+}
+
+@media (max-width: 412px) {
+
+  .username {
+    max-width: 150px;
+  }
+
+}
+
+@media (max-width: 360px) {
+
+  .username {
+    max-width: 150px;
+  }
+
+}
+

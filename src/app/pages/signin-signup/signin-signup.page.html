@@ -1,0 +1,76 @@
+
+
+<ion-content scroll="false">
+
+
+  <div class="login-box" id="login-box">
+    <div class="login">
+      <h1>login</h1>
+        <label for="username_login">Username</label>
+        <div class="input-container">
+          <ion-input id="username_login" [(ngModel)]="signin_username" type="text"  placeholder="Username"></ion-input>
+          <label for="username_login" class="icon">
+            <fa-icon icon="user"></fa-icon>
+          </label>
+        </div>
+        <label for="password_login">Password</label>
+        <div class="input-container">
+          <ion-input id="password_login" [(ngModel)]="signin_pass" type="password" placeholder="Password"></ion-input>
+          <label for="password_login" class="icon">
+            <fa-icon icon="lock"></fa-icon>
+          </label>
+        </div>
+
+        <div class="login-remember">
+          <span class="login-remember-text">
+            Reset password
+          </span>
+        </div>
+        <button (click)="signIn()">Login</button>
+        <span class="login-separator"></span>
+    </div>
+  </div>
+
+  <div class="signup-box" id="signup-box">
+    <div class="login">
+      <h1>signup</h1>
+      <label for="username_signup">Username</label>
+      <div class="input-container">
+        <ion-input id="username_signup" [(ngModel)]="signup_username" type="text" placeholder="Username"></ion-input>
+        <label for="username_signup" class="icon">
+          <fa-icon icon="user"></fa-icon>
+        </label>
+      </div>
+      <label for="email">Email</label>
+      <div class="input-container">
+        <ion-input id="email" type="text" [(ngModel)]="signup_email" placeholder="Email"></ion-input>
+        <label for="email" class="icon">
+          <fa-icon icon="envelope"></fa-icon>
+        </label>
+      </div>
+      <label for="password_signup">Password</label>
+      <div class="input-container">
+        <ion-input id="password_signup" type="password" [(ngModel)]="signup_pass" placeholder="Password"></ion-input>
+        <label for="password_signup" class="icon">
+          <fa-icon icon="lock"></fa-icon>
+        </label>
+      </div>
+      <button (click)="signUp()">Sign up</button>
+      <span class="login-separator"></span>
+    </div>
+  </div>
+
+<div class="bottom-container">
+  <h6>or</h6>
+  <button id="signup-btn" (click)="getSignup()">signup</button>
+  <button id="login-btn" (click)="getLogin()">login</button>
+</div>
+
+
+
+
+
+
+
+
+</ion-content>

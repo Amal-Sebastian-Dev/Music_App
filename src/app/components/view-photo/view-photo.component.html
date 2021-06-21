@@ -1,0 +1,17 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons (click)="dismiss()" slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<img src={{path}} style="position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+
+
+<ion-fab-button (click)="sendImageFile()" color="success" style="position: absolute; left: 50%; transform: translateX(-50%); bottom: 30px;">
+  <ion-spinner *ngIf="sending == true" name="crescent" color="like"></ion-spinner>
+  <ion-icon *ngIf="sending == false" name="chevron-forward"></ion-icon>
+</ion-fab-button>

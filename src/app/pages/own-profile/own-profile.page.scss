@@ -1,0 +1,190 @@
+@font-face {
+  font-family: 'Audiowide';
+
+  src: url('../../../assets/Audiowide/Audiowide-normal-400.ttf')// to your font file
+}
+
+ion-header {
+  --background-color: transparent;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+  --background: #231444;
+}
+
+ion-content {
+  --background: #231444;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.side-btn {
+  z-index: 15;
+  position: fixed;
+  left: -50px;
+  background: white;
+  color: #4facfe;
+  padding: .5rem;
+  font-size: 25px;
+  border-radius: 50%;
+}
+
+#upload-btn {
+  top: 10%;
+  transition: left 0.4s, color 0.2s, background 0.2s;
+}
+
+#chat-btn {
+  top: 17%;
+  transition: left 0.6s, color 0.2s, background 0.2s;
+}
+
+#home-btn {
+  top: 24%;
+  transition: left 0.8s, color 0.2s, background 0.2s;
+}
+
+#tv-btn {
+  top: 31%;
+  transition: left 1s, color 0.2s, background 0.2s;
+}
+
+.card {
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+
+  .card-text {
+    color: black;
+    height: fit-content;
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+
+    .profile-img {
+      text-align: center;
+      position: relative;
+      height: 170px;
+      width: 170px;
+      --border-radius: 40%;
+      margin: auto;
+      margin-bottom: 10px;
+      box-shadow: 2px 5px 15px rgb(0 0 0 / 90%);
+    }
+
+    .card-img {
+      text-align: center;
+      position: relative;
+      height: 170px;
+      width: 170px;
+      background-size: cover;
+      color: rgb(209, 209, 209);
+      border-radius: 40%;
+      margin: auto;
+      margin-bottom: 10px;
+      box-shadow: 2px 5px 15px rgb(0 0 0 / 90%);
+    }
+
+    h2 {
+      margin: 8px;
+      margin-bottom: 2px;
+      font-size: 25px;
+    }
+
+    h5 {
+      margin: 0;
+      margin-top: 8px;
+      color: grey;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  }
+
+  .card-stats {
+    display: flex;
+    justify-content: space-around;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 15px;
+    padding: 6px 16px;
+
+
+    .stats {
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 15px 10px;
+      color: white;
+      box-shadow: 2px 5px 15px rgb(0 0 0 / 90%);
+    }
+
+    .type {
+      font-size: 11px;
+      font-weight: 400;
+      color: grey;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+#miniPlayer {
+  //border-radius: 80px;
+  transition: 1s;
+  position: fixed;
+  bottom: -200px;
+  color: #222f3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .time {
+    font-family: 'Audiowide';
+  }
+}
+
+@media (max-width: 412px) {
+
+  .song-name {
+    color: white;
+    text-overflow: ellipsis;
+    max-width: 120px;
+  }
+
+}
+
+@media (max-width: 360px) {
+
+  .song-name {
+    font-size: 14px;
+    max-width: 120px;
+  }
+
+  #miniPlayer {
+
+    .song-name {
+      max-width: 90px;
+      font-size: 14px;
+    }
+
+    .time {
+      font-size: 13px;
+    }
+  }
+
+}
+

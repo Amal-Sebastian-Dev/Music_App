@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Audiowide';
+
+  src: url('../assets/Audiowide/Audiowide-normal-400.ttf')// to your font file
+}
+
+//#miniPlayer {
+//
+//  width: 98%;
+//  z-index: 100;
+//  border-radius: 50px;
+//
+//  position: fixed;
+//  left: 50%;
+//  transform: translateX(-50%);
+//  bottom: 20px;
+//  color: #222f3e;
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//
+//
+//}
+
+ion-toolbar {
+  position: fixed;
+  --background: transparent;
+  --ion-color-base: transparent !important;
+  transition: 1s;
+  //bottom: 0px;
+
+  .time {
+    font-family: 'Audiowide';
+  }
+}
+
+.goUp {
+  bottom: 0px;
+}
+
+.goDown {
+  bottom: -200px;
+}

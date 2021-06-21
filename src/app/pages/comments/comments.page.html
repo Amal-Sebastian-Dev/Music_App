@@ -1,0 +1,116 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button  style="color: #ff28e9;" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-spinner style="width: 40px; height: 40px; position: absolute; left: 50%; top: 50%; transform: translate(-40%, -50%);" *ngIf="comments.length <= 0" name="crescent" color='secondary'></ion-spinner>
+
+
+  <!-------------Comment Section-------------->
+
+    <ion-list class="comment-section" style='--border-radius: 20px;'>
+      <div  *ngFor='let comment of comments'>
+        <ion-row>
+          <ion-col size='2'>
+            <div style="border-radius: 50%; box-shadow: 2px 5px 15px rgb(0 0 0 / 90%); height: 50px; width: 50px; position: relative; top: 12px;" *ngIf="comment.profilePic == null || comment.profilePic == ''"></div>
+            <ion-avatar *ngIf="comment.profilePic != null" button (click)="viewProfile(comment.authorID)">
+              <img src={{comment?.profilePic}}>
+            </ion-avatar>
+          </ion-col>
+          <ion-col size='10'>
+            <ion-row>
+              <p button (click)="viewProfile(comment.authorID)" class='username' style='color: white; margin-left: 5px; margin-right: 10px;'>{{comment?.authorName}}</p>
+              <p class='time' style='color: #abb7d4; font-size: 12.5px; position: relative; top: 3px;'>{{comment?.createdAt | amTimeAgo}}</p>
+            </ion-row>
+            <ion-row>
+              <p class='comment' style='color: rgb(209, 206, 206); margin-top: -8px; margin-left: 5px; max-width: 100%;'>{{comment?.comment}}</p>
+            </ion-row>
+            <ion-row>
+              <div style="display: flex; margin-left: 8px; margin-right: 15px; flex-direction: row; color: #889bc7">
+                <ion-icon [color]="comment.liked == true ? 'like' : '#889bc7'" style="font-size: 15px;" (click)="likeComment(comment)" name="chevron-up-sharp"></ion-icon>
+                <ion-text [color]="comment.liked == true ? 'like' : '#889bc7'" style="font-size: 12px;">{{comment?.likes}}</ion-text>
+              </div>
+              <div style="display: flex; flex-direction: row; margin-right: 15px; color: #889bc7">
+                <ion-icon [color]="comment.disliked == true ? 'like' : '#889bc7'" (click)="dislikeComment(comment)"  style="font-size: 15px;" name="chevron-down-sharp"></ion-icon>
+                <ion-text [color]="comment.disliked == true ? 'like' : '#889bc7'" style="font-size: 12px;">{{comment?.dislikes}}</ion-text>
+              </div>
+              <p style="color: #889bc7; margin-top: 0px; margin-right: 15px; font-size: 12.5px;" (click)="loadReplies(comment)">{{comment?.repliesLen}} replies</p>
+              <p style="color: white; font-size: 13px; font-family: 'Audiowide'; margin-top: -1px;" (click)='replyComment(comment)'>reply</p>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+        <div *ngIf="comment.replies != null" style=" width: 100%;">
+          <ion-row *ngFor="let reply of comment.replies"  style="position: relative; left: 20%; transform: translateX(0%);">
+            <ion-col size='2'>
+              <div style="border-radius: 50%;box-shadow: 2px 5px 15px rgb(0 0 0 / 90%); height: 50px; width: 50px; position: relative; top: 12px;" *ngIf="reply.profilePic == null || reply.profilePic == ''"></div>
+              <ion-avatar *ngIf="reply.profilePic != null" button (click)="viewProfile(reply.authorID)">
+                <img src={{reply?.profilePic}}>
+              </ion-avatar>
+            </ion-col>
+            <ion-col size='10'>
+              <ion-row>
+                <p button (click)="viewProfile(reply.authorID)" class='username' style='color: white; margin-left: 5px; margin-right: 10px;'>{{reply?.authorName}}</p>
+                <p class='time' style='color: #abb7d4; font-size: 12.5px; position: relative; top: 3px;'>{{reply?.createdAt | amTimeAgo}}</p>
+              </ion-row>
+              <ion-row>
+                <p class='comment' style='color: rgb(209, 206, 206); margin-top: -8px; margin-left: 5px; max-width: 100%;'>{{reply?.reply}}</p>
+              </ion-row>
+              <ion-row>
+                <div style="display: flex; margin-left: 8px; margin-right: 15px; flex-direction: row; color: #889bc7">
+                  <ion-icon [color]="reply.liked == true ? 'like' : '#889bc7'" (click)="likeReply(reply, comment.commentID)" style="font-size: 15px;" slot='icon-only' name="chevron-up-sharp"></ion-icon>
+                  <ion-text [color]="reply.liked == true ? 'like' : '#889bc7'" style="font-size: 12px;">{{reply?.likes}}</ion-text>
+                </div>
+                <div style="display: flex; flex-direction: row; margin-right: 15px; color: #889bc7">
+                  <ion-icon [color]="reply.disliked == true ? 'like' : '#889bc7'" (click)="dislikeReply(reply, comment.commentID)" style='font-size: 15px;' name="chevron-down-sharp"></ion-icon>
+                  <ion-text [color]="reply.disliked == true ? 'like' : '#889bc7'" style="font-size: 12px;">{{reply?.dislikes}}</ion-text>
+                </div>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="comment.moreRepliesAvailable == true" style="width: 100%;">
+            <p style=" color: white; font-size: 13px; position: relative; left: 50%; transform: translateX(0%);" (click)="loadMoreReplies(comment)">more replies</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div *ngIf="moreCommentsAvailable == true" style="width: 100%;">
+        <p style=" color: white; font-size: 13px; position: relative; left: 35%; transform: translateX(0%);" (click)="loadMoreComments()">more comments</p>
+      </div>
+
+      <div style="width: 100%; height: 70px;">
+
+      </div>
+
+    </ion-list>
+
+    <!--
+      <ion-item *ngIf="comments != null" class="input-section" lines="none">
+      <ion-input [(ngModel)]='comment'></ion-input>
+      <ion-fab-button (click)='createComment()' color='success' style='color: white; width: 35px; height: 35px;'>
+        <ion-icon name="chevron-forward-sharp"></ion-icon>
+      </ion-fab-button>
+      </ion-item>
+    -->
+
+</ion-content>
+
+<ion-footer *ngIf="comments != null" style="padding-left: 5px; padding-right: 5px; overflow: hidden; height: min-content;">
+  <ion-toolbar style="height: auto; --background: hsl(259, 55%, 17%);">
+    <ion-input id="comment" [class]="comment.length <= 0 ? 'normal-input' : 'shorter-input'" [(ngModel)]="comment" placeholder="Type here....." style="background: white; border-radius: 20px; --padding-start: 20px; --padding-end: 50px; transition: 0.5s;"></ion-input>
+    <ion-fab-button [class]="comment.length <= 0 ? 'normal-btn' : 'slide-btn'" slot="end" (click)="createComment()" color='success' style='position: fixed; color: white; width: 40px; height: 40px; transition: 0.5s;'>
+      <ion-icon *ngIf="loading == false" name="chevron-forward-sharp"></ion-icon>
+      <ion-spinner *ngIf="loading == true" name="crescent" color="like"></ion-spinner>
+    </ion-fab-button>
+  </ion-toolbar>
+</ion-footer>
+
+
+
+
